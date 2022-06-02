@@ -3,7 +3,7 @@ function computerPlay() {
     return(gameOption[Math.floor(Math.random() * 3)])
 }
 
-function playGame(playerSelection, computerSelection) {
+function playRound(playerSelection, computerSelection) {
     playerSelection = playerSelection.toUpperCase();
     let winStatement = `You win! ${playerSelection} beats ${computerSelection}`;
     let loseStatement = `You lose! ${computerSelection} beats ${playerSelection}`;
@@ -14,21 +14,42 @@ function playGame(playerSelection, computerSelection) {
         if (computerSelection === 'PAPER') {
             return loseStatement; 
         } 
-        else {return winStatement;} 
+        else if (computerSelection === 'SCISSORS') {
+            return winStatement;
+        }
     }
     if (playerSelection === 'PAPER') {
         if (computerSelection === 'SCISSORS') {
             return loseStatement; 
         } 
-        else {return winStatement;} 
+        else if (computerSelection === 'ROCK') {
+            return winStatement;
+        }
     }
     if (playerSelection === 'SCISSORS') {
         if (computerSelection === 'ROCK') {
             return loseStatement; 
         } 
-        else {return winStatement;} 
+        else if (computerSelection === 'PAPER') {
+            return winStatement;} 
     }
+    else {return 'Input a valid answer! (Rock, paper or scissors)';}}
+
+function game() {
+    let playerScore = 0 
+    let computerScore = 0
+
+    while (playerScore < 3 && computerScore < 3) {
+        let gameResult = playRound(prompt('Input your choice'), computerPlay());
+        if (gameResult.substring(0, 6) === 'You wi') {playerScore++;}
+        else if (gameResult.substring(0,6) === 'You lo') {computerScore++;}
+        return gameResult;
+    }
+
+    if (playerScore > computerScore) {
+        return 'You win the game! Congrats';
+    }
+    else {return 'You lost the game! Try again';}
 }
 
-console.log(playGame(computerPlay(), computerPlay()));
-
+console.log(game());
