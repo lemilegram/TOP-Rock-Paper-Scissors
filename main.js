@@ -33,7 +33,8 @@ function playRound(playerSelection, computerSelection) {
         else if (computerSelection === 'PAPER') {
             return winStatement;} 
     }
-    else {return 'Input a valid answer! (Rock, paper or scissors)';}}
+    else {return 'Input a valid answer! (Rock, paper or scissors)';}
+}
 
 function game() {
     let playerScore = 0 
@@ -51,5 +52,3 @@ function game() {
     }
     else {return 'You lost the game! Try again';}
 }
-
-console.log(game());
